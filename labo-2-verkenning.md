@@ -247,21 +247,21 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
 5. Kopieer `file1` naar een nieuw bestand `file3` in de huidige directory
 
     ```
-    $ cp file2 file3
+    $ cp file1 file3
     UITVOER
     ```
 
 6. Kopieer `file1` naar de directory `f/` (die zou je nog moeten hebben van vorige oefening)
 
     ```
-    $ sudo cp file2 f/
+    $ sudo cp file1 f/
     UITVOER
     ```
 
 7. Kopieer `file1` en file2 in één keer naar `f/g/`. Je zou de gegeven situatie moeten krijgen.
 
     ```
-    $ COMMANDO
+    $ sudo cp file1 file2 f/g/
     UITVOER
     $ tree
     .
@@ -281,21 +281,22 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
 8. *Hernoem* `file3` naar `file4`
 
     ```
-    $ COMMANDO
+    $ mv file3 file4
     UITVOER
     ```
 
 9. Verplaats `file2` naar directory `f/`
 
     ```
-    $ COMMANDO
+    $ sudo mv file2 f/
     UITVOER
     ```
 
 10. Verplaats `file1` en `file4` in één keer naar `f/h/`. Je zou de gegeven situatie moeten krijgen.
 
     ```
-    $ COMMANDO
+    $ sudo mv {file1,file4} f/h/
+
     UITVOER
     $ tree
     .
@@ -317,7 +318,7 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
 11. Kopieer `f/h/`, inclusief de inhoud, naar een nieuwe directory `f/j/`
 
     ```
-    $ COMMANDO
+    $ sudo cp -r f/h/ f/j/
     UITVOER
     ```
 
@@ -339,42 +340,42 @@ Toon met `ls` telkens de gevraagde bestanden, niet meer en niet minder.
 1. Alle bestanden die beginnen met `file`
 
     ```
-    $ COMMANDO
+    $ ls -d file*
     UITVOER
     ```
 
 2. Alle bestanden die beginnen met `file`, gevolgd door één letterteken (cijfer of letter)
 
     ```
-    $ COMMANDO
+    $ ls -d file?
     UITVOER
     ```
 
 3. Alle bestanden die beginnen met `file`, gevolgd door één letter, maar geen cijfer
 
     ```
-    $ COMMANDO
+    $ ls -d file[a-z]
     UITVOER
     ```
 
 4. Alle bestanden die beginnen met `file`, gevolgd door één cijfer, maar geen letter
 
     ```
-    $ COMMANDO
+    $ ls -d file[0-9]
     UITVOER
     ```
 
 5. De bestanden `file12` t/m `file16`
 
     ```
-    $ COMMANDO
+    $ ls -d file[1][2-6]
     UITVOER
     ```
 
 6. Bestandern die beginnen met `file`, *niet* gevolgd door een `1`
 
     ```
-    $ COMMANDO
+    $ ls -d file[!1]
     UITVOER
     ```
 
@@ -389,8 +390,11 @@ Maak in de directory `linux/` twee tekstbestanden aan, met naam `tekst1a` en `te
     UITVOER
     ```
 
-2. Maak een *harde link* aan met naam `tekst1b` die verwijst naar bestand `tekst1a`
-3. Maak een *symbolische link* aan met naam `tekst2b` die verwijst naar bestand `tekst2a`
+2. Maak een *harde link* aan met naam `tekst1b` die verwijst naar bestand `tekst1a` 
+command = ln tekst1a.txt tekst1b.txt
+3. Maak een *symbolische link* aan met naam `tekst2b` die verwijst naar bestand `tekst2a` 
+command = ln -s tekst2a.txt tekst2b.txt
+
 4. Voor het volgende commando uit en geef de uitvoer:
 
     ```
@@ -400,51 +404,51 @@ Maak in de directory `linux/` twee tekstbestanden aan, met naam `tekst1a` en `te
 
 5. Hoe zie je aan de uitvoer van `ls` dat `tekst1b` een harde link is en `tekst2b` een symbolische? Tip: Vergelijk met de uitvoer uit vraag 1!
 
-    **Antwoord**: ...
+    **Bij tekst2b staar er in het begin een "l" wat wijst op een symbolische link. Ook staat de link teller van de hard gelinkte bestanden op 2. Als laatste kan je ook bij de bestandsnaam zien dat tekst2b.txt met een pijl verwijst naar tekst2a.txt**: ...
 
 6. Verwijder de oorspronkelijke bestanden, `tekst1a` en `tekst2a`. Maak het commando zo kort mogelijk!
 
     ```
-    $ COMMANDO
+    $ sudo rm tekst1a.txt tekst2a.txt
     UITVOER
     ```
 
 7. Toon opnieuw de uitvoer van `ls -l tekst*`, en bekijk de inhoud van `tekst1b` en `tekst2b`. Wat valt je op?
 
     ```
-    $ COMMANDO
+    $ ls -l tekst*
     UITVOER
     ```
 
-    **Antwoord**: ...
+    **De symbolische link staat in het rood en de link counter staat op 1, met de harde link lijkt er op het eerste zicht niks mis of anders als voor het verwijderen van de oorspronkelijke bestanden.**: ...
 
 ### Bestanden archiveren
 
 1. Creëer in je home-directory een archief `linux.tar.bz2` van de directory `linux/` en alle inhoud.
 
     ```
-    $ COMMANDO
+    $ tar cjf linux.tar.bz2 linux/
     UITVOER
     ```
 
 2. Verwijder nu volledig de directory `linux/`
 
     ```
-    $ COMMANDO
+    $  rm -r linux/
     UITVOER
     ```
 
 3. Toon de inhoud van het archief zonder opnieuw uit te pakken
 
     ```
-    $ COMMANDO
+    $ less linux.tar.bz2 
     UITVOER
     ```
 
 4. Pak het archief opnieuw uit in je home-directory.
 
     ```
-    $ COMMANDO
+    $ tar xf linux.tar.bz2 
     UITVOER
     ```
 
