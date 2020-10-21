@@ -5,21 +5,21 @@
 1. Hoe vraag je op de command-line documentatie op voor het *commando* `passwd`?
 
     ```
-    $ COMMANDO
+    $ man passwd
     UITVOER
     ```
 
 2. Hoe vraag je documentatie op voor het *configuratiebestand* `/etc/passwd`?
 
     ```
-    $ COMMANDO
+    $ man /etc/passwd
     UITVOER
     ```
 
 3. Hoe vraag je een lijst op van alle documentatie die de string `passwd` bevat?
 
     ```
-    $ COMMANDO
+    $ ???
     UITVOER
     ```
 
@@ -28,28 +28,28 @@
 1. Wat is de huidige datum en uur?
 
     ```
-    $ COMMANDO
+    $ date
     UITVOER
     ```
 
 2. Wat is de huidige directory?
 
     ```
-    $ COMMANDO
+    $ pwd
     UITVOER
     ```
 
 3. Toon de inhoud van de huidige directory. De uitvoer zou er ongeveer zo moeten uit zien:
 
     ```
-    $ COMMANDO
+    $ ls
     Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
     ```
 
 4. Toon de inhoud van de huidige directory, maar toon voor elk bestand meer informatie en ook "verborgen" bestanden.
 
     ```
-    $ COMMANDO
+    $ ls -a -n
     total 96
     drwx------. 14 student student 4096 Sep 24 09:14 .
     drwxr-xr-x.  3 root    root    4096 Sep 20 13:46 ..
@@ -68,20 +68,25 @@
 5. Toon de inhoud van de hoofddirectory van het Linux-systeem, ook vaak de root-directory genoemd. Geef een uitgebreide listing zoals in de vorige vraag, maar *zonder* verborgen bestanden.
 
     ```
-    $ COMMANDO
+    // de / = de root directory
+    $ ls / -n
     UITVOER
     ```
 
 6. Wat betekenen volgende elementen van de uitvoer hierboven?
-    - 1e kolom (bv. `drwxr-xr-x.`): ...
-    - 2e kolom (getal): ...
-    - 3e kolom (bv. `root`, `student`): ...
-    - 4e kolom (bv. `root`): ...
-    - 5e kolom (getal): ...
-    - 6e - 8e kolom (datum): ...
-    - de aanduiding `->` (bv. `bin -> usr/bin`): ...
+
+Zie uitleg op: https://linuxhandbook.com/linux-file-permissions/
+
+    - 1e kolom (bv. `drwxr-xr-x.`) = Het eerste karakter staat voor de file type en de rest zijn de machtigingen van de verschillende gebruikers.
+    - 2e kolom (getal): Hard Link Count 
+    - 3e kolom (bv. `root`, `student`): User Owner
+    - 4e kolom (bv. `root`): Group Owner
+    - 5e kolom (getal): File Size
+    - 6e - 8e kolom (datum): Modification TimeStamp
+    - de aanduiding `->` (bv. `bin -> usr/bin`): File Name
 7. Hoe kan je commando's die je voordien uitgevoerd hebt terug ophalen (de "commandogeschiedenis")?
 
+Pijltje omhoog klikken.
     ```
     $ COMMANDO
     UITVOER
@@ -93,20 +98,20 @@ Vul de tabel hieronder aan. In de linkerkolom vind je de namen van een directory
 
 | Directory                         | Inhoud                                                  |
 | :---                              | :---                                                    |
-| `/bin`, `/usr/bin`                | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | Uitvoerbare bestanden voor systeembeheertaken           |
-| `/var`                            | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | Tijdelijke bestanden                                    |
-| `/opt`, `/usr/local`              | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | Home-directory van de `root` gebruiker                  |
-| **`ANTWOORD`**                    | Home-directory van de gebruiker `student`               |
-| **`ANTWOORD`**                    | De inhoud van de man-pages                              |
+| `/bin`, `/usr/bin`                | **Essential User Command Binaries                       |
+| **`/etc`**                        | Uitvoerbare bestanden voor systeembeheertaken           |
+| `/var`                            | **Variable Files**                                      |
+| **`/tmp`**                        | Tijdelijke bestanden                                    |
+| `/opt`, `/usr/local`              | **Add-on application software packages**                |
+| **`/root`**                       | Home-directory van de `root` gebruiker                  |
+| **`/usr/student`**                | Home-directory van de gebruiker `student`               |
+| **`/usr/share/man`**              | De inhoud van de man-pages                              |
 | **`ANTWOORD`**                    | Andere documentatie                                     |
-| `/lib`, `/usr/lib`, `lib64`, enz. | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | De inhoud van de installatie-cd voor Guest Additions(*) |
-| `/dev`                            | **ANTWOORD**                                            |
-| `/proc`                           | **ANTWOORD**                                            |
-| **`ANTWOORD`**                    | Systeemconfiguratiebestanden                            |
+| `/lib`, `/usr/lib`, `lib64`, enz. | **Essential shared libraries and kernel modules**       |
+| **`/mnt/`**                       | De inhoud van de installatie-cd voor Guest Additions(*) |
+| `/dev`                            | **Device Files**                                        |
+| `/proc`                           | **Virtual Filesystem Documenting kernel and process status as text files**                                                                                       |
+| **`/etc/`**                    | Systeemconfiguratiebestanden                            |
 
 (*) Je kan het insteken van de cd simuleren in het VirtualBox-venster van je VM in het menu "Devices" > "Insert Guest Additions CD image..." (of het Nederlandstalige equivalent).
 
@@ -124,35 +129,35 @@ In deze oefening leer je onderscheid maken tussen *relatieve* en *absolute paden
 1. Blijf in je home-directory en maak van hieruit een directory `tijdelijk/` aan onder `/tmp/`
 
     ```
-    $ COMMANDO
+    $ mkdir /tmp/tijdelijk/
     UITVOER
     ```
 
 2. Verwijder deze directory meteen
 
     ```
-    $ COMMANDO
+    $ rmdir /tmp/tijdelijk
     UITVOER
     ```
 
 3. Maak onder je home-directory een submap aan met de naam `linux/`
 
     ```
-    $ COMMANDO
+    $ sudo mkdir /home/linux/
     UITVOER
     ```
 
 4. Ga naar deze directory
 
     ```
-    $ COMMANDO
+    $  cd /home/linux/
     UITVOER
     ```
 
 5. Maak met één commando de subdirectory `a/b/` aan onder `linux/`. Als je nadien het commando `tree` geeft, moet je de gegeven uitvoer zien.
 
     ```
-    $ COMMANDO
+    $ sudo mkdir -p a/b/
     UITVOER
     $ tree
     .
@@ -164,14 +169,16 @@ In deze oefening leer je onderscheid maken tussen *relatieve* en *absolute paden
 6. Verwijder directory `b/` en daarna `a/` (in twee commando's)
 
     ```
-    $ COMMANDO
+    $ sudo rmdir a/b
+      sudo rmdir a
+
     UITVOER
     ```
 
 7. Maak met één commando deze directorystructuur aan.
 
     ```
-    $ COMMANDO
+    $ sudo mkdir -p  c/{d,e}/
     UITVOER
     $ tree
     .
@@ -184,14 +191,14 @@ In deze oefening leer je onderscheid maken tussen *relatieve* en *absolute paden
 8. Verwijder in één commando de directory `c/` en alle onderliggende
 
     ```
-    $ COMMANDO
+    $ sudo rm -r c
     UITVOER
     ```
 
 9. Maak met één commando deze directorystructuur aan. Het is de bedoeling de opdrachtregel zo kort mogelijk te maken, dus niet alle directories apart opgeven!
 
     ```
-    $ COMMANDO
+    $ sudo mkdir -p f/{g/i,h/i}/
     UITVOER
     $ tree
     .
@@ -211,14 +218,14 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
 1. Maak een leeg bestand aan met de naam `file1`
 
     ```
-    $ COMMANDO
+    $ sudo touch file1
     UITVOER
     ```
 
 2. Maak een *verborgen* bestand aan met de naam `hidden`. Verborgen betekent dat je het niet kan zien met een "gewone" `ls`, maar wel met de gepaste optie.
 
     ```
-    $ COMMANDO
+    $ sudo touch .hidden
     UITVOER
     ```
 
@@ -228,26 +235,26 @@ Behoud deze directorystructuur voor de volgende oefeningen over bestanden.
     $ echo hello world > file2
     ```
 
-    **Antwoord:** 
+    **Antwoord: Hello world word weggeschreven naar file2 dat in de command ook aangemaakt wordt.** 
 
 4. Toon de inhoud van `file2`
 
     ```
-    $ COMMANDO
+    $ cat file2
     UITVOER
     ```
 
 5. Kopieer `file1` naar een nieuw bestand `file3` in de huidige directory
 
     ```
-    $ COMMANDO
+    $ cp file2 file3
     UITVOER
     ```
 
 6. Kopieer `file1` naar de directory `f/` (die zou je nog moeten hebben van vorige oefening)
 
     ```
-    $ COMMANDO
+    $ sudo cp file2 f/
     UITVOER
     ```
 
