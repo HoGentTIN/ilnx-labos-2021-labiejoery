@@ -10,6 +10,10 @@ Bekijk ook eens de [presentatie over Vim en tmux](https://www.openminds.be/nl/bl
 
 Gebruik de Vi-editor om een bestand aan te maken met de naam `landen`. De inhoud is de volgende (incl. de cijfers):
 
+$ Commando = vim landen.txt
+	i om in insert mode te gaan
+	":" en dan wq + enter om op te slaan en vim te verlaten.
+
 ```
 1 België
 2 Frankrijk
@@ -20,6 +24,7 @@ Gebruik de Vi-editor om een bestand aan te maken met de naam `landen`. De inhoud
 
 Maak ook een bestand aan met de naam `autokentekens` met deze inhoud:
 
+zie vorige oefening
 ```
 1 B
 2 F
@@ -31,55 +36,55 @@ Maak ook een bestand aan met de naam `autokentekens` met deze inhoud:
 1. Hoe start je Vi op om deze bestanden aan te maken?
 
     ```
-    $ COMMANDO
+    $ zie eerste oef.
     UITVOER
     ```
 
 2. Hoe ga je van *normal mode* naar *insert mode*? Geef verschillende manieren:
 
     | Invoegen vanaf                  | Commando |
-    | :---                            | :---     |
-    | op de huidige cursorpositie     | `X`      |
-    | rechts van de cursor            | `X`      |
-    | begin van huidige regel         | `X`      |
-    | einde van huidige regel         | `X`      |
-    | regel toevoegen onder deze      | `X`      |
-    | regel toevoegen op huidige lijn | `X`      |
+    | :---                            | :     |
+    | op de huidige cursorpositie     | :i    |
+    | rechts van de cursor            | :a      |
+    | begin van huidige regel         | :I      |
+    | einde van huidige regel         | :A      |
+    | regel toevoegen onder deze      | :o      |
+    | regel toevoegen op huidige lijn | :O      |
 
 3. Hoe kopieer je vanuit *normal mode*?
 
     | Te kopiëren                              | Commando |
     | :---                                     | :---     |
-    | Huidige regel                            | `X`      |
-    | Huidige regel en die eronder             | `X`      |
-    | Het huidige woord                        | `X`      |
-    | Het huidige en de twee volgende woorden  | `X`      |
-    | Van de cursor tot het einde van de regel | `X`      |
-    | Tot het einde van de *zin*               | `X`      |
-    | Tot het einde van de *paragraaf*         | `X`      |
-    | Alle tekst tussen haakjes `(...)`        | `X`      |
+    | Huidige regel                            | yy       |
+    | Huidige regel en die eronder             | Nyy kopieert de volgende N lijnen + de huidige lijn hiervoor moet je niet eerst ":" intikken dus 5yy kopieert de huidige lijn + de 4 volgende    |
+    | Het huidige woord                        | yw     |
+    | Het huidige en de twee volgende woorden  | yNw waarbij N voor het aantal woorden staat      |
+    | Van de cursor tot het einde van de regel | Y      |
+    | Tot het einde van de *zin*               | Y      |
+    | Tot het einde van de *paragraaf*         | ??     |
+    | Alle tekst tussen haakjes `(...)`        | ??     |
 
 4. Hoe knip je tekst vanuit *normal* mode?
 
     | Te knippen                                  | Commando |
     | :---                                        | :---     |
-    | Huidige regel                               | `X`      |
-    | Huidige regel en die eronder                | `X`      |
-    | Het huidige woord                           | `X`      |
-    | Het huidige en de twee volgende woorden     | `X`      |
-    | Het letterteken op de positie van de cursor | `X`      |
-    | Van de cursor tot het einde van de regel    | `X`      |
-    | Tot het einde van de *zin*                  | `X`      |
-    | Tot het einde van de *paragraaf*            | `X`      |
-    | Alle tekst tussen haakjes `(...)`           | `X`      |
+    | Huidige regel                               | `dd`      |
+    | Huidige regel en die eronder                | `d2d`      |
+    | Het huidige woord                           | `dw`      |
+    | Het huidige en de twee volgende woorden     | `d2w`      |
+    | Het letterteken op de positie van de cursor | ??     |
+    | Van de cursor tot het einde van de regel    | ??      |
+    | Tot het einde van de *zin*                  | ??      |
+    | Tot het einde van de *paragraaf*            | ??      |
+    | Alle tekst tussen haakjes `(...)`           | ??      |
 
 6. Hoe kan je gekopieerde/geknipte tekst plakken?
 
 
     | Tekst plakken          | Commando |
     | :---                   | :---     |
-    | Rechts/onder de cursur | `X`      |
-    | Op de cursur           | `X`      |
+    | Rechts/onder de cursur | p      |
+    | Op de cursur           | P = caps      |
 
 De bedoeling van voorgaande oefening is om een idee te geven van hoe veelzijdig Vi is. Er zijn *veel* commando's, maar er zit een duidelijke logica in. Een voorbeeld is `ci{`: dit staat voor *Change inside braces*. Vim zal links en rechts van de cursor zoeken naar accolades, alle tekst ertussen verwijderen en naar insert mode gaan. Je kan in het commando de `{` vervangen door een ander teken zoals bv. `(`, `"`, `'`, `[`, `<`.
 
@@ -92,14 +97,14 @@ In onderstaande vragen is het telkens de bedoeling één commando te geven om de
 1. Voeg het bestand `landen` en `autokentekens` samen met het commando `join` (zoek de werking ervan op met het man-commando). Het resultaat wordt opgeslagen in het bestand `landenkentekens`.
 
     ```
-    $ COMMANDO
+    $ join landen.txt autokentekens.txt > landenkentekens.txt
     UITVOER
     ```
 
 2. Bekijk de inhoud van `landenkentekens` en controleer of het overeenkomt met de uitvoer hieronder.
 
     ```
-    $ COMMANDO
+    $ cat landenkentekens.txt
     1 België B
     2 Frankrijk F
     3 Zwitserland CH
@@ -110,14 +115,14 @@ In onderstaande vragen is het telkens de bedoeling één commando te geven om de
 3. Haal uit `landenkentekens` alleen kolom 2 en kolom 3 eruit en sla dit resultaat op als `landenkentekens2`.
 
     ```
-    $ COMMANDO
+    $ sed -n 2,3p kentekenslanden.txt > landenkentekens2.txt
     UITVOER
     ```
 
 4. Controleer of de inhoud van `landenkentekens2` overeenkomt met de uitvoer hieronder.
 
     ```
-    $ COMMANDO
+    $ cat landenkentekens2.txt
     België B
     Frankrijk F
     Zwitserland CH
@@ -135,7 +140,7 @@ In onderstaande vragen is het telkens de bedoeling één commando te geven om de
 6. Sorteer `landenkentekens2` alfabetisch op de autokentekens. Sla het bekomen resultaat op in `gesorteerdeautokentekens`. Controleer het resultaat.
 
     ```
-    $ COMMANDO
+    $ awk '{print $NF,$0}' landenkentekens2.txt | sort | cut -f2- -d' '
     UITVOER
     $ COMMANDO
     België B
