@@ -43,12 +43,18 @@ zie vorige oefening
 2. Hoe ga je van *normal mode* naar *insert mode*? Geef verschillende manieren:
 
     | Invoegen vanaf                  | Commando |
-    | :---                            | :     |
+   
+   | :---                            | :     |
     | op de huidige cursorpositie     | :i    |
+    
     | rechts van de cursor            | :a      |
+    
     | begin van huidige regel         | :I      |
+    
     | einde van huidige regel         | :A      |
+    
     | regel toevoegen onder deze      | :o      |
+    
     | regel toevoegen op huidige lijn | :O      |
 
 3. Hoe kopieer je vanuit *normal mode*?
